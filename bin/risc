@@ -1,0 +1,19 @@
+#!/bin/env python3
+import sys
+import argparse
+
+from risc.parser import parse
+from risc.machine import run, print_state
+
+
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser(
+        description='The Reduced Instruction Set Computer'
+    )
+    parser.add_argument('infile', help='Source code')
+    args = parser.parse_args()
+    with open(args.infile) as infile:
+        program = parse(infile.read())
+        run(program)
+        print_state()
+        sys.exit(0)

@@ -1,0 +1,10 @@
+load $1 %AX
+load $1 %CX
+load $6 %BX
+jmp loc1
+loop:
+  mul %CX %AX
+  add $1 %CX
+loc1:
+  cmp %BX %CX
+  jl loop
